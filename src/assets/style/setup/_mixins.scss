@@ -80,18 +80,16 @@
 // Buttons
 
 @mixin btn($type: regular) {
-    // width: Fixed (340px) px;
-    height: 41px;
-    // top: 399px;
-    // left: 10px;
-    // gap: 10px;
-    border-radius: 60px;
+    height: 48px;
+    border-radius: 10px;
     border: none;
-    font-size: 14px;
-    font-weight: 600;
-    background: var(--gradient);
+    font-family: 'EzerMeoded-Black';
+    font-size: rem(20px);
+    font-weight: 400;
+    background: rgba(255, 143, 115, 1);
     color: white;
-    width: 100%;
+    // width: 100%;
+    width: 200px;
 
     &:disabled {
         cursor: auto;
@@ -108,15 +106,15 @@
 
 @mixin input($type: regular) {
     // width: 340px;
-    height: 45px;
+    height: 53px;
     border: var(--border-primary);
     border-radius: 10px;
     color: var(--dark-grey);
 
     &::placeholder {
-        font-size: 14px;
+        font-size: 18px;
         // line-height: 21px;
-        // color: var(--dark-grey);
+        color: var(--dark-grey);
     }
 }
 

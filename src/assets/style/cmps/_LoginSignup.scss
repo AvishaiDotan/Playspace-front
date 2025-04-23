@@ -1,22 +1,72 @@
 .login-signup,
 .admin-login {
-    margin-top: 142px;
-    width: 100%;
-    max-width: 400px;
-    min-width: 250px;
+    @include flex(column, center, center);
+    height: 100vh;
+    overflow: hidden;
+    // margin-top: 142px;
+    // width: 100%;
+    // max-width: 400px;
+    // min-width: 250px;
+
+    .sparkle {
+        position: absolute;
+        width: 15px;
+        height: 14px;
+        pointer-events: none;
+
+        &.sparkle1 {
+            top: 35vh;
+            left: 15vw;
+        }
+
+        &.sparkle2 {
+            top: 30vh;
+            right: 15vw;
+        }
+
+        &.sparkle3 {
+            top: 75vh;
+            left: 15vw;
+        }
+
+        &.sparkle4 {
+            bottom: 30vh;
+            right: 15vw;
+        }
+
+        &.sparkle5 {
+            bottom: 18vh;
+            right: 25vw;
+        }
+
+        &.sparkle6 {
+            bottom: 5vh;
+            right: 50vw;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    .playspace-logo-new {
+        width: 132px;
+        margin-bottom: 20px;
+    }
 
     .signup-form,
     .admin-login-form {
         position: relative;
+        @include flex(column, center, center, 16px);
         // margin-top: 142px;
-        padding: 0px 10px;
-        @include flex(column, stretch, start, 21px);
+        // padding: 0px 10px;
 
         span {
-            // font-family: Poppins;
-            font-weight: 600;
-            font-size: 16px;
-            line-height: 24px;
+            font-weight: 900;
+            font-size: rem(24px);
+            line-height: 29px;
             color: var(--primary-35);
 
             &.error {
@@ -26,6 +76,7 @@
                 font-weight: 400;
             }
         }
+
         .end-span {
             align-self: end;
             font-size: 14px;
@@ -33,7 +84,9 @@
 
         input {
             @include input;
-            padding: 0px 38px;
+            // padding: 0px 38px;
+            width: 200px;
+            text-align: center;
         }
 
         .input-img {
@@ -50,6 +103,7 @@
                 left: 18px;
                 top: 121px;
             }
+
             &.password {
                 left: 18px;
                 top: 56px;
@@ -64,8 +118,7 @@
 
         button {
             @include btn;
-            // margin-top: 29px;
-            margin-top: 10px;
+            margin-top: 16px;
         }
 
         p {
@@ -79,5 +132,21 @@
                 font-size: 14px;
             }
         }
+    }
+
+    .bottom-text {
+        margin-top: 3rem;
+
+        span {
+            font-size: rem(14px);
+            color: var(--black);
+        }
+    }
+
+    .bottom-link {
+        font-size: rem(14px);
+        color: rgba(62, 85, 240, 1);
+        text-decoration: none;
+        margin-right: 5px;
     }
 }

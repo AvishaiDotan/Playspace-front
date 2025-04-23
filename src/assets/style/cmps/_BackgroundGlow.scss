@@ -1,0 +1,41 @@
+.background-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    
+    .glow-circle {
+        position: absolute;
+        border-radius: 50%;
+        background: radial-gradient(42.74% 42.74% at 50% 50%, #fff 17.5%, rgba(255, 255, 255, 0) 100%);
+
+        &.right {
+            width: min(137vw, 100%);
+            height: min(89.7vh, 100%);
+            top: -10vh;
+            left: 50vw;
+            background: radial-gradient(42.74% 42.74% at 50% 50%, #FFDAE4 17.5%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        &.left {
+            width: min(62vw, 100%);
+            height: min(43vh, 100%);
+            top: -5vh;
+            left: -31vw;
+            background: radial-gradient(42.74% 42.74% at 50% 50%, #E8E4FF 17.5%, rgba(255, 255, 255, 0) 100%);
+        }
+
+        &.bottom {
+            width: min(137vw, 100%);
+            height: min(89.7vh, 100%);
+            top: 70vh;
+            left: 50%;
+            transform: translateX(-50%);
+            background: radial-gradient(42.74% 42.74% at 50% 50%, rgba(254, 241, 189, 1) 0%, rgba(255, 255, 255, 0) 100%);
+        }
+    }
+}

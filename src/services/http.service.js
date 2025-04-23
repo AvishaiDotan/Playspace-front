@@ -2,16 +2,14 @@ import Axios from 'axios'
 
 const BASE_URL = process.env.NODE_ENV === 'production'
     ? '/api/'
-    // : ''
-    // : 'https://localhost:7264/api/'
     : 'https://playspace.co.il/api/'
-
 
 const axios = Axios.create({
     withCredentials: true,
-    // headers: {
-    //     'Content-Type': 'application/json'
-    // },
+    headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+    }
 })
 
 export const httpService = {

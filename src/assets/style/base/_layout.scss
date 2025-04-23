@@ -1,20 +1,23 @@
 .main-layout {
   @include flex(column, center, start);
+  height: 100%;
+  overflow: hidden;
   @include for-mobile-layout {
   }
 
   main {
-    // min-height: 100vh;
     position: relative;
+    z-index: 1;
     width: 100%;
     min-width: 250px;
-    // min-height: 87vh;
-    height: 100vh;
-    // overflow-y: scroll;
+    height: 100%;
+    overflow: hidden;
+    
     .main-container {
-      // @include flex(column, center, center, 10px);
-      height: 100vh;
+      height: 100%;
+      overflow: hidden;
     }
+    
     @include for-narrow-layout {
     }
 
@@ -27,12 +30,10 @@
     top: 0;
     left: 0;
     z-index: 10;
-
     padding: 0px;
     width: 100%;
     height: 100%;
     background-color: rgba(85, 84, 84, 0.441);
-
     display: none;
   }
 
