@@ -14,25 +14,25 @@
         background: radial-gradient(42.74% 42.74% at 50% 50%, #fff 17.5%, rgba(255, 255, 255, 0) 100%);
 
         &.right {
-            width: min(137vw, 100%);
+            width: 100%;
             height: min(89.7vh, 100%);
             top: -10vh;
-            left: 50vw;
+            left: 40vw;
             background: radial-gradient(42.74% 42.74% at 50% 50%, #FFDAE4 17.5%, rgba(255, 255, 255, 0) 100%);
         }
 
         &.left {
-            width: min(62vw, 100%);
-            height: min(43vh, 100%);
-            top: -5vh;
+            width: 100%;
+            height: min(80vh, 100%);
+            top: -15vh;
             left: -31vw;
             background: radial-gradient(42.74% 42.74% at 50% 50%, #E8E4FF 17.5%, rgba(255, 255, 255, 0) 100%);
         }
 
         &.bottom {
-            width: min(137vw, 100%);
-            height: min(89.7vh, 100%);
-            top: 70vh;
+            width: 100%;
+            height: min(90vh, 100%);
+            top: 60vh;
             left: 50%;
             transform: translateX(-50%);
             background: radial-gradient(42.74% 42.74% at 50% 50%, rgba(254, 241, 189, 1) 0%, rgba(255, 255, 255, 0) 100%);
