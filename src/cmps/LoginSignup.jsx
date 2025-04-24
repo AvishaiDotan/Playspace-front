@@ -1,7 +1,7 @@
 import playspaceLogoBlue from '../assets/img/playspace-logo-blue.png'
 import playspaceLogoNew from '../assets/img/playspace-logo-new.png'
-import user from '../assets/img/user.png'
-import email from '../assets/img/email.png'
+import user from '../assets/img/user-new.png'
+import email from '../assets/img/email-new.png'
 import sparkleIcon from '../assets/img/sparkle.png'
 import { LoadingScreen } from './LoadingScreen'
 import React from 'react';
@@ -58,11 +58,11 @@ export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEf
 
                 <form onSubmit={formik.handleSubmit} className="signup-form" id="signupForm" >
                     <span>{text}</span>
-                    {/* <img className="input-img user" src={user} /> */}
-                    <input placeholder="שם משתמש" type="text" id="name" name="name" onChange={handleInputChange} onBlur={formik.handleBlur} value={formik.values.name} required />
+                    <img className="input-img user" src={user} />
+                    <input placeholder="שם מלא" type="text" id="name" name="name" onChange={handleInputChange} onBlur={formik.handleBlur} value={formik.values.name} required />
                     {/* <input placeholder="Name" type="text" id="name" name="name" value={credentials.name} onChange={handleChange} required /> */}
 
-                    {/* <img className="input-img email" src={email} /> */}
+                    <img className="input-img email" src={email} />
                     {/* <img className="input-img eye" src={eye} /> */}
                     <input placeholder="דוא״ל" type="email" id="email" name="email" onChange={handleInputChange} onBlur={formik.handleBlur} value={formik.values.email} required />
                     {/* {formik.touched.email && formik.errors.email ? (
