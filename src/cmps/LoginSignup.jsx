@@ -75,7 +75,7 @@ export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEf
                     {/* <button type={btnType} disabled={!(credentials.name && credentials.email)} onClick={onBtnClick}>{text}</button> */}
 
                 </form>
-                <div className="bottom-text">
+                {/* <div className="bottom-text">
                     {isSignupPage ? (
                         <>
                             <span>כבר יש לך חשבון? </span>
@@ -87,7 +87,7 @@ export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEf
                             <Link to="/signup" className="bottom-link">הירשם כאן</Link>
                         </>
                     )}
-                </div>
+                </div> */}
             </section>
         </>
     )
