@@ -52,7 +52,8 @@
     }
 
     .playspace-logo-new {
-        width: 132px;
+        // width: 132px;
+        width: var(--logo-width);
         margin-bottom: 20px;
     }
 

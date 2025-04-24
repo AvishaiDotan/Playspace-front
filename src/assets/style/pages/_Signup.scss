@@ -6,9 +6,12 @@
         animation-timing-function: cubic-bezier(0.7, -0.4, 0.4, 1.4);
         animation-duration: 3500ms;
         animation-fill-mode: forwards;
-        width: 200px;
-        height: 35.85px;
+        // width: 200px;
+        width: calc(var(--logo-width) * 1.5);
+        // height: 35.85px;
     }
+
+    
 
     .playspace-logo {
         animation-name: smart;
@@ -135,10 +138,15 @@
     0% {
         top: 0px;
     }
+    50% {
+        width: var(--logo-width)
+    }
     100% {
         top: -170px;
-        width: 178.54px;
-        height: 32px;
+        // width: 178.54px;
+        // width: var(--logo-width);
+        
+        // height: 32px;
     }
 }
 // for short layout
@@ -149,8 +157,9 @@
     100% {
         // top: 50px;
         top: -130px;
-        width: 178.54px;
-        height: 32px;
+        // width: 178.54px;
+        width: var(--logo-width);
+        // height: 32px;
     }
 }
 
