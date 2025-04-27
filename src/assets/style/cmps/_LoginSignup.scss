@@ -69,53 +69,108 @@
             font-size: rem(24px);
             line-height: 29px;
             color: var(--primary-35);
+            direction: rtl;
 
-            &.error {
-                background-color: black;
-                color: white;
-                padding: 5px 8px;
+            // &.error {
+            //     background-color: black;
+            //     color: white;
+            //     padding: 5px 8px;
+            //     font-weight: 400;
+            // }
+
+        }
+
+        .input-group {
+            display: flex;
+            position: relative;
+
+            input {
+                @include input;
+                text-align: right;
+                padding-inline: 35px;
+            }
+
+            .input-img {
+                position: absolute;
+                width: 16px;
+                right: 18px;
+                top: 50%;
+                transform: translateY(-50%);
+
+                &.eye {
+                    left: 18px;
+                    cursor: pointer;
+                }
+            }
+
+            .error {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background-color: #ffebee;
+                color: #b71c1c;
+                padding: 8px 12px;
                 font-weight: 400;
+                font-size: 14px;
+                border-radius: 10px;
+                border: 1px solid #d32f2f;
+                margin-top: 4px;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                animation: fadeIn 0.2s ease-in-out;
+                z-index: 10;
+                direction: rtl;
+
+                &::before {
+                    content: "!";
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 16px;
+                    height: 16px;
+                    background-color: #b71c1c;
+                    color: white;
+                    padding: 2px;
+                    border-radius: 50%;
+                }
             }
         }
 
-        .end-span {
-            align-self: end;
-            font-size: 14px;
-        }
+        // input {
+        //     @include input;
+        //     // padding: 0px 38px;
+        //     width: 200px;
+        //     text-align: center;
+        // }
 
-        input {
-            @include input;
-            // padding: 0px 38px;
-            width: 200px;
-            text-align: center;
-        }
+        // .input-img {
+        //     position: absolute;
+        //     width: 22px;
+        //     height: 22px;
 
-        .input-img {
-            position: absolute;
-            width: 22px;
-            height: 22px;
+        //     &.user {
+        //         left: 18px;
+        //         top: 56px;
+        //     }
 
-            &.user {
-                left: 18px;
-                top: 56px;
-            }
+        //     &.email {
+        //         left: 18px;
+        //         top: 121px;
+        //     }
 
-            &.email {
-                left: 18px;
-                top: 121px;
-            }
+        //     &.password {
+        //         left: 18px;
+        //         top: 56px;
+        //     }
 
-            &.password {
-                left: 18px;
-                top: 56px;
-            }
-
-            &.eye {
-                top: 56px;
-                right: 20px;
-                cursor: pointer;
-            }
-        }
+        //     &.eye {
+        //         top: 56px;
+        //         right: 20px;
+        //         cursor: pointer;
+        //     }
+        // }
 
         button {
             @include btn;
@@ -149,5 +204,17 @@
         color: rgba(62, 85, 240, 1);
         text-decoration: none;
         margin-right: 5px;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }

@@ -89,7 +89,7 @@
     background: rgba(255, 143, 115, 1);
     color: white;
     // width: 100%;
-    width: 200px;
+    width: 250px;
 
     &:disabled {
         cursor: auto;
@@ -105,14 +105,14 @@
 }
 
 @mixin input($type: regular) {
-    // width: 340px;
+    width: 250px;
     height: 53px;
     border: var(--border-primary);
     border-radius: 10px;
     color: var(--dark-grey);
+    font-size: rem(18px);
 
     &::placeholder {
-        font-size: 18px;
         // line-height: 21px;
         color: var(--dark-grey);
     }
