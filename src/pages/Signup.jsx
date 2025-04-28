@@ -17,7 +17,6 @@ import avatar5 from '../assets/img/avatar_5.png'
 import avatar6 from '../assets/img/avatar_6.png'
 import avatar7 from '../assets/img/avatar_7.png'
 import avatar8 from '../assets/img/avatar_8.png'
-import sparkleIcon from '../assets/img/sparkle2.png'
 
 import v from '../assets/img/green-v.png'
 import eye from '../assets/img/eye.png'
@@ -31,6 +30,7 @@ import { useEffectToggleModal } from '../customHooks/useEffectToggleModal'
 import { useEffectCloseModal } from '../customHooks/useEffectCloseModal'
 import { showUserMsg } from "../services/event-bus.service.js"
 import { SelectedImg } from "../cmps/SelectedImg.jsx"
+import { FancyTitle } from "../cmps/FancyTitle.jsx"
 
 // work : http://localhost:5173/signup/80c6face-668b-4d14-82e8-08dc98ddb702
 // lifeSaver:
@@ -198,30 +198,9 @@ export function Signup() {
 
             {stepIdx === 1 &&
                 <section className="step-1">
-                    <div className="header">
-                        <img src={sparkleIcon} alt="sparkle" />
-                        <span className="select">בחר את האווטאר שלך</span>
-                        <img src={sparkleIcon} alt="sparkle" />
-                        {/* <img className="plus" onClick={onToggleOpenUserImgAddModal} src={plus} />
-                        {openUserImgAddModal && <UserImgAddModal isLoading={isLoading} media={credentials.media} onChangeFileInput={onChangeFileInput} onCloseModal={onCloseModal} />} */}
-                    </div>
+                    <FancyTitle title= "בחר את האווטאר שלך"/>
 
-                    {/* <div className="avatar-container"> */}
-                    {/* <div className="carousel-container"> */}
-                    {/* <span> Classic</span> */}
-                    {/* <Carousel items={avatars1} setCredentials={setCredentials} userImg={credentials.media?.url} /> */}
-                    {/* </div> */}
-                    {/* <div className="carousel-container">
-                            <span>Toon</span>
-                            <Carousel items={avatars2} setCredentials={setCredentials} userImg={credentials.media?.url} />
-                        </div>
-                        <div className="carousel-container">
-                            <span>Animal</span>
-                            <Carousel items={avatars3} setCredentials={setCredentials} userImg={credentials.media?.url} />
-                        </div> */}
-                    {/* </div> */}
                     <div className="avatar-container">
-                        {/* <div className="avatar-item add-avatar" onClick={onToggleOpenUserImgAddModal}> */}
                         <div className="add-avatar" onClick={onToggleOpenUserImgAddModal}>
                             {openUserImgAddModal && <UserImgAddModal isLoading={isLoading} media={credentials.media} onChangeFileInput={onChangeFileInput} onCloseModal={onCloseModal} />} 
                             <img src={plus} alt="הוסף אווטאר" />
@@ -247,7 +226,7 @@ export function Signup() {
                         ))}
                     </div>
 
-                    <button disabled={!(credentials.media?.url)} onClick={() => setStepIdx(prev => prev + 1)}>קדימה מתחילים!</button>
+                    <button className="big-btn"disabled={!(credentials.media?.url)} onClick={() => setStepIdx(prev => prev + 1)}>קדימה מתחילים!</button>
                 </section>}
 
             {

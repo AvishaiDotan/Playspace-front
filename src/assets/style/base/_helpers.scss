@@ -6,9 +6,11 @@
 .clr1 {
     background-color: var(--clr-0);
 }
+
 .clr2 {
     background-color: var(--clr-1);
 }
+
 .clr3 {
     background-color: var(--clr-2);
 }
@@ -19,4 +21,13 @@
 
 .purple-btn {
     @include purple-btn;
+}
+
+button {
+    @include btn;
+    margin-top: 15px;
+}
+
+.big-btn {
+    @include btn(62px, 310px);
 }

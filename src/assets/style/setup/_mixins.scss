@@ -79,8 +79,9 @@
 
 // Buttons
 
-@mixin btn($type: regular) {
-    height: 48px;
+@mixin btn($height: 48px, $width: 250px, ) {
+    height: $height;
+    width: $width;
     border-radius: 10px;
     border: none;
     font-family: 'EzerMeoded-Black';
@@ -88,8 +89,6 @@
     font-weight: 400;
     background: rgba(255, 143, 115, 1);
     color: white;
-    // width: 100%;
-    width: 250px;
     direction: rtl;
 
     &:disabled {
@@ -97,8 +96,6 @@
     }
 }
 
-// @mixin blue-btn($type: regular) {
-// }
 
 @mixin purple-btn($type: regular) {
     background-color: purple;
