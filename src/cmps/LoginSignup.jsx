@@ -104,7 +104,7 @@ export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEf
                         )}
                     </div>
 
-                    <button type="submit" dir="rtl">
+                    <button type="submit">
                         {isSignup ? "הירשם" : "בואו נתחיל!"}
                     </button>
 

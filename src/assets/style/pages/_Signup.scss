@@ -1,5 +1,6 @@
 .signup,
 .login {
+
     .playspace-logo,
     .playspace-logo-blue {
         animation-delay: 800ms;
@@ -11,7 +12,7 @@
         // height: 35.85px;
     }
 
-    
+
 
     .playspace-logo {
         animation-name: smart;
@@ -21,6 +22,7 @@
             animation-name: smart1;
         }
     }
+
     .playspace-logo-blue {
         animation-name: smart2;
         position: absolute;
@@ -40,62 +42,99 @@
         width: 178.54px;
         height: 32px;
     }
+
     @include flex(column, center, center);
 
     //////////////////////! step-1 ///////////////////////
     .step-1 {
+        @include flex(column, center, center);
         padding: 10px;
         width: 100%;
         max-width: 400px;
+
         // @include flex(column, stretch, center, 10px);
         .header {
             margin-top: 28px;
             @include flex(row, center, space-between, 10px);
+
             .select {
-                font-weight: 600;
-                color: var(--primary-35);
+                padding: 10px;
+                border-width: 1px 0;
+                border-style: solid;
+                border-color: rgba(255, 218, 228, 1);
+                
             }
+
+
+        }
+
+        .avatar-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            justify-items: center;
+            margin: 24px 0;
+
+            .add-avatar {
+                @include flex(row, center, center);
+                width: 93px;
+                height: 93px;
+                background-color: rgba(62, 85, 240, 1);
+                border-radius: 50%;
+
+            }
+
             .plus {
-                width: 29px;
-                height: 29px;
+                // width: 29px;
+                // height: 29px;
                 cursor: pointer;
             }
+
+            .avatar-item {
+                width: 93px;
+            }
+
+            //     margin-top: 15px;
+
+            //     .carousel-container {
+            //         height: 139px;
+            //         border-radius: 10px;
+            //         background-color: var(--primary-95);
+            //         margin-bottom: 12px;
+            //         padding: 10px 8px;
+
+            //         span {
+            //             font-size: 14px;
+            //             font-weight: 600;
+            //         }
+            //     }
+
         }
-        .avatar-container {
+
+        button {
+            @include btn;
             margin-top: 15px;
-
-            .carousel-container {
-                height: 139px;
-                border-radius: 10px;
-                background-color: var(--primary-95);
-                margin-bottom: 12px;
-                padding: 10px 8px;
-
-                span {
-                    font-size: 14px;
-                    font-weight: 600;
-                }
-            }
-
-            button {
-                @include btn;
-                margin-top: 15px;
-            }
+            width: 295px;
+            height: 62px;
         }
     }
+
     //////////////////////! step-2 ///////////////////////
 
     .step-2 {
         width: 100%;
         max-width: 400px;
         padding: 10px;
+
         .header {
             margin-top: 28px;
+
             span {
                 font-weight: 600;
                 color: var(--primary-35);
             }
         }
+
         ul.groups-container {
             margin-top: 24px;
             // max-height: 468px;
@@ -118,6 +157,7 @@
                 &.selected {
                     border: 2.5px solid #54ca7c;
                 }
+
                 img.green-v {
                     position: absolute;
                     width: 30px;
@@ -127,6 +167,7 @@
                 }
             }
         }
+
         button {
             @include btn;
             margin-top: 20px;
@@ -138,22 +179,26 @@
     0% {
         top: 0px;
     }
+
     50% {
         width: var(--logo-width)
     }
+
     100% {
         top: -170px;
         // width: 178.54px;
         // width: var(--logo-width);
-        
+
         // height: 32px;
     }
 }
+
 // for short layout
 @keyframes smart1 {
     0% {
         top: 0px;
     }
+
     100% {
         // top: 50px;
         top: -130px;
@@ -167,6 +212,7 @@
     0% {
         top: calc(50% - 35.85px / 2 - 50px);
     }
+
     100% {
         top: calc((50% - 32px / 2) - 220px);
         left: calc(50% - 178.54px / 2);
@@ -180,6 +226,7 @@
     0% {
         top: calc(50% - 35.85px / 2 - 50px);
     }
+
     100% {
         // top: calc((50% - 32px / 2) - 220px);
         top: 50px;

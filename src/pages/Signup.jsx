@@ -17,25 +17,10 @@ import avatar5 from '../assets/img/avatar_5.png'
 import avatar6 from '../assets/img/avatar_6.png'
 import avatar7 from '../assets/img/avatar_7.png'
 import avatar8 from '../assets/img/avatar_8.png'
-import avatar9 from '../assets/img/avatar9.png'
-import avatar10 from '../assets/img/avatar10.png'
-import avatar11 from '../assets/img/avatar11.png'
-import avatar12 from '../assets/img/avatar12.png'
-import avatar13 from '../assets/img/avatar13.png'
-import avatar14 from '../assets/img/avatar14.png'
-import avatar15 from '../assets/img/avatar15.png'
-import avatar16 from '../assets/img/avatar16.png'
-import avatar17 from '../assets/img/avatar17.jpg'
-import avatar18 from '../assets/img/avatar18.jpg'
-import avatar19 from '../assets/img/avatar19.jpg'
-import avatar20 from '../assets/img/avatar20.jpg'
-import avatar21 from '../assets/img/avatar21.jpg'
-import avatar22 from '../assets/img/avatar22.jpg'
-import avatar23 from '../assets/img/avatar23.jpg'
-import avatar24 from '../assets/img/avatar24.jpg'
+
 import v from '../assets/img/green-v.png'
 import eye from '../assets/img/eye.png'
-import plus from '../assets/img/plus.png'
+import plus from '../assets/img/plus-white.png'
 import { LoginSignup } from "../cmps/LoginSignup.jsx"
 
 
@@ -44,6 +29,7 @@ import { useToggle } from '../customHooks/useToggle'
 import { useEffectToggleModal } from '../customHooks/useEffectToggleModal'
 import { useEffectCloseModal } from '../customHooks/useEffectCloseModal'
 import { showUserMsg } from "../services/event-bus.service.js"
+import { SelectedImg } from "../cmps/SelectedImg.jsx"
 
 // work : http://localhost:5173/signup/80c6face-668b-4d14-82e8-08dc98ddb702
 // lifeSaver:
@@ -61,9 +47,8 @@ export function Signup() {
     const [stepIdx, setStepIdx] = useState(utilService.loadFromStorage('signupStepIdx') || 0)
     const [isLoading, setIsLoading] = useState(false)
 
-    const avatars1 = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8]
-    const avatars2 = [avatar9, avatar10, avatar11, avatar12, avatar13, avatar14, avatar15, avatar16]
-    const avatars3 = [avatar17, avatar18, avatar19, avatar20, avatar21, avatar22, avatar23, avatar24]
+    const avatars = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8]
+
 
     const [openUserImgAddModal, onToggleOpenUserImgAddModal] = useToggle(false)
     const { isScreenOpen, onOpenScreen, onCloseScreen, } = useContext(ScreenOpenContext)
@@ -196,13 +181,13 @@ export function Signup() {
         <section className="signup">
 
             {stepIdx === 0 &&
-                <LoginSignup 
-                    credentials={credentials} 
-                    handleChange={handleChange} 
-                    onBtnClick={onSignUpNameEmail} 
-                    text="הרשמה" 
-                    useEffectFunc={getUserFromBack} 
-                    companyIcon={shallowGame?.icon} 
+                <LoginSignup
+                    credentials={credentials}
+                    handleChange={handleChange}
+                    onBtnClick={onSignUpNameEmail}
+                    text="הרשמה"
+                    useEffectFunc={getUserFromBack}
+                    companyIcon={shallowGame?.icon}
                     isSignup={true}
                 />
             }
@@ -213,30 +198,57 @@ export function Signup() {
             {stepIdx === 1 &&
                 <section className="step-1">
                     <div className="header">
-                        <span className="select">Select your avatar</span>
-                        <img className="plus" onClick={onToggleOpenUserImgAddModal} src={plus} />
-                        {openUserImgAddModal && <UserImgAddModal isLoading={isLoading} media={credentials.media} onChangeFileInput={onChangeFileInput} onCloseModal={onCloseModal} />}
+                        <span className="select">בחר את האווטאר שלך</span>
+                        {/* <img className="plus" onClick={onToggleOpenUserImgAddModal} src={plus} />
+                        {openUserImgAddModal && <UserImgAddModal isLoading={isLoading} media={credentials.media} onChangeFileInput={onChangeFileInput} onCloseModal={onCloseModal} />} */}
                     </div>
 
-                    <div className="avatar-container">
-                        <div className="carousel-container">
-                            <span> Classic</span>
-                            <Carousel items={avatars1} setCredentials={setCredentials} userImg={credentials.media?.url} />
-                        </div>
-                        <div className="carousel-container">
+                    {/* <div className="avatar-container"> */}
+                    {/* <div className="carousel-container"> */}
+                    {/* <span> Classic</span> */}
+                    {/* <Carousel items={avatars1} setCredentials={setCredentials} userImg={credentials.media?.url} /> */}
+                    {/* </div> */}
+                    {/* <div className="carousel-container">
                             <span>Toon</span>
                             <Carousel items={avatars2} setCredentials={setCredentials} userImg={credentials.media?.url} />
                         </div>
                         <div className="carousel-container">
                             <span>Animal</span>
                             <Carousel items={avatars3} setCredentials={setCredentials} userImg={credentials.media?.url} />
+                        </div> */}
+                    {/* </div> */}
+                    <div className="avatar-container">
+                        {/* <div className="avatar-item add-avatar" onClick={onToggleOpenUserImgAddModal}> */}
+                        <div className="add-avatar" onClick={onToggleOpenUserImgAddModal}>
+                            {openUserImgAddModal && <UserImgAddModal isLoading={isLoading} media={credentials.media} onChangeFileInput={onChangeFileInput} onCloseModal={onCloseModal} />} 
+                            <img src={plus} alt="הוסף אווטאר" />
                         </div>
-
-                        <button disabled={!(credentials.media?.url)} onClick={() => setStepIdx(prev => prev + 1)}>Next</button>
+                        {avatars.map((item, i) => (
+                            <div className="avatar-item" key={i}>
+                                {credentials.media?.url !== item && (
+                                    <img
+                                        onClick={() =>
+                                            setCredentials(prev => ({
+                                                ...prev,
+                                                media: { url: item, type: 'image' }
+                                            }))
+                                        }
+                                        src={item}
+                                        alt={`avatar-${i + 1}`}
+                                    />
+                                )}
+                                {credentials.media?.url === item && (
+                                    <SelectedImg imgUrl={item} />
+                                )}
+                            </div>
+                        ))}
                     </div>
+
+                    <button disabled={!(credentials.media?.url)} onClick={() => setStepIdx(prev => prev + 1)}>קדימה מתחילים!</button>
                 </section>}
 
-            {stepIdx === 2 && shallowGame &&
+            {
+                stepIdx === 2 && shallowGame &&
                 <section className="step-2">
                     {shallowGame.groups && <>
                         <div className="header">
@@ -267,7 +279,8 @@ export function Signup() {
                     {/* {loggedinPlayer.groupId &&
                     <Link to={`/game/${credentials.gameId}`}>כניסה למשחק</Link>} */}
 
-                </section>}
-        </section>
+                </section>
+            }
+        </section >
     )
 }
