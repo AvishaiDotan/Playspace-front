@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useFormik } from 'formik'
 import { string, object } from 'yup';
 import { showUserMsg } from '../services/event-bus.service';
@@ -11,9 +11,7 @@ import sparkleIcon from '../assets/img/sparkle.png'
 import user from '../assets/img/user-new.png'
 import email from '../assets/img/email-new.png'
 
-export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEffectFunc, companyIcon }) {
-    const location = useLocation()
-    const isSignupPage = location.pathname.includes('signup')
+export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEffectFunc, companyIcon, isSignup }) {
     const sparkles = Array.from({ length: 6 }, (_, i) => i + 1)
 
     const formik = useFormik({
@@ -107,7 +105,7 @@ export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEf
                     </div>
 
                     <button type="submit" dir="rtl">
-                        {isSignupPage ? "הירשם" : "בואו נתחיל!"}
+                        {isSignup ? "הירשם" : "בואו נתחיל!"}
                     </button>
 
                 </form>

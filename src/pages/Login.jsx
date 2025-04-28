@@ -62,7 +62,13 @@ export function Login() {
     return (<section className="login">
 
         {!loggedinUser &&
-            <LoginSignup credentials={credentials} handleChange={handleChange} onBtnClick={handleSubmitLoginForm} text="התחברות" />
+            <LoginSignup 
+                credentials={credentials} 
+                handleChange={handleChange} 
+                onBtnClick={handleSubmitLoginForm} 
+                text="התחברות" 
+                isSignup={false}
+            />
         }
         {loggedinUser?.isAdmin &&
             <AdminLogin loggedinUser={loggedinUser} handleSubmitAdminForm={handleSubmitAdminForm} credentials={credentials} handleChange={handleChange} />}

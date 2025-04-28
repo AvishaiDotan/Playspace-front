@@ -203,6 +203,7 @@ export function Signup() {
                     text="הרשמה" 
                     useEffectFunc={getUserFromBack} 
                     companyIcon={shallowGame?.icon} 
+                    isSignup={true}
                 />
             }
             {/* {stepIdx === 0 && !loggedinPlayer &&
