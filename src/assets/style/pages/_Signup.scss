@@ -54,16 +54,19 @@
 
         // @include flex(column, stretch, center, 10px);
         .header {
-            margin-top: 28px;
             @include flex(row, center, space-between, 10px);
+            margin-top: 28px;
+            padding: 10px;
+            border-width: 1px 0;
+            border-style: solid;
+            border-color: rgba(255, 218, 228, 1);
+            
 
-            .select {
-                padding: 10px;
-                border-width: 1px 0;
-                border-style: solid;
-                border-color: rgba(255, 218, 228, 1);
-                
-            }
+            // .select {
+                // line-height: 29px;
+                // font-size: 16px;
+            
+            // }
 
 
         }
@@ -73,6 +76,7 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 16px;
             justify-items: center;
+            align-items: center;
             margin: 24px 0;
 
             .add-avatar {

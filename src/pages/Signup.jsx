@@ -17,6 +17,7 @@ import avatar5 from '../assets/img/avatar_5.png'
 import avatar6 from '../assets/img/avatar_6.png'
 import avatar7 from '../assets/img/avatar_7.png'
 import avatar8 from '../assets/img/avatar_8.png'
+import sparkleIcon from '../assets/img/sparkle2.png'
 
 import v from '../assets/img/green-v.png'
 import eye from '../assets/img/eye.png'
@@ -198,7 +199,9 @@ export function Signup() {
             {stepIdx === 1 &&
                 <section className="step-1">
                     <div className="header">
+                        <img src={sparkleIcon} alt="sparkle" />
                         <span className="select">בחר את האווטאר שלך</span>
+                        <img src={sparkleIcon} alt="sparkle" />
                         {/* <img className="plus" onClick={onToggleOpenUserImgAddModal} src={plus} />
                         {openUserImgAddModal && <UserImgAddModal isLoading={isLoading} media={credentials.media} onChangeFileInput={onChangeFileInput} onCloseModal={onCloseModal} />} */}
                     </div>
