@@ -16,13 +16,11 @@ export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEf
     const isSignupPage = location.pathname.includes('signup')
     const sparkles = Array.from({ length: 6 }, (_, i) => i + 1)
 
-
     const formik = useFormik({
         initialValues: {
             name: credentials.name,
             email: credentials.email,
         },
-
         // validate: (values) => {
         //     const errors = {}
         //     if (!values.email || !values.name) {
@@ -38,33 +36,34 @@ export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEf
         //     return errors
         // },
 
-        validationSchema: object({
-            name: string()
-                .required("נא למלא שם מלא")
-                .test(
-                    "no-hebrew",
-                    "אנא הקלד באנגלית בלבד",
-                    value => !value || !/[\u0590-\u05FF]/.test(value)
-                ),
-            email: string()
-                .required("נא למלא כתובת אימייל")
-                .test(
-                    "no-hebrew",
-                    "אנא הקלד באנגלית בלבד",
-                    value => !value || !/[\u0590-\u05FF]/.test(value)
-                )
-                .test(
-                    "has-at",
-                    "כתובת האימייל חייבת לכלול '@'",
-                    value => !value || value.includes('@')
-                )
-                .test(
-                    "has-dot",
-                    "כתובת האימייל חייבת לכלול סיומת (למשל .com)",
-                    value => !value || /\.[a-zA-Z]{2,}$/.test(value)
-                )
-                .email("כתובת האימייל אינה תקינה"),
-        }),
+        validate: (values) => {
+            const errors = {}
+            if (!values.name) {
+                errors.name = 'נא למלא שם מלא'
+            } else if (/[\u0590-\u05FF]/.test(values.name)) {
+                errors.name = 'אנא הקלד באנגלית בלבד'
+            }
+
+            if (!values.email) {
+                errors.email = 'נא למלא כתובת אימייל'
+            } else if (/[\u0590-\u05FF]/.test(values.email)) {
+                errors.email = 'אנא הקלד באנגלית בלבד'
+            } else if (!values.email.includes('@')) {
+                errors.email = 'כתובת האימייל חייבת לכלול \'@\''
+            } else if (!/\.[a-zA-Z]{2,}$/.test(values.email)) {
+                errors.email = 'כתובת האימייל חייבת לכלול סיומת (למשל .com)'
+            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+                errors.email = 'כתובת האימייל אינה תקינה'
+            }
+
+            // Show the first error message if there are any errors
+            // if (Object.keys(errors).length > 0) {
+            //     const firstError = Object.values(errors)[0]
+            //     showUserMsg(firstError)
+            // }
+
+            return errors
+        },
         onSubmit: (values) => {
             onBtnClick()
         },
@@ -101,6 +100,7 @@ export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEf
                         <input placeholder="דוא״ל" type="email" id="email" name="email" onChange={handleInputChange} onBlur={formik.handleBlur} value={formik.values.email} />
                         {/* <input placeholder="דוא״ל" type="email" id="email" name="email" onChange={handleInputChange} onBlur={formik.handleBlur} value={formik.values.email} required /> */}
                         <img className="input-img email" src={email} />
+
                         {formik.touched.email && formik.errors.email && (
                             <div className="error">{formik.errors.email}</div>
                         )}

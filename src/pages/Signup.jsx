@@ -196,7 +196,14 @@ export function Signup() {
         <section className="signup">
 
             {stepIdx === 0 &&
-                <LoginSignup credentials={credentials} handleChange={handleChange} onBtnClick={onSignUpNameEmail} text="הרשמה" useEffectFunc={getUserFromBack} companyIcon={shallowGame?.icon} />
+                <LoginSignup 
+                    credentials={credentials} 
+                    handleChange={handleChange} 
+                    onBtnClick={onSignUpNameEmail} 
+                    text="הרשמה" 
+                    useEffectFunc={getUserFromBack} 
+                    companyIcon={shallowGame?.icon} 
+                />
             }
             {/* {stepIdx === 0 && !loggedinPlayer &&
                 <LoginSignup credentials={credentials} handleChange={handleChange} onBtnClick={() => setStepIdx(prev => prev + 1)} btnType="button" text="Sign up" />
