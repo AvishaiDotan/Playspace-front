@@ -23,7 +23,7 @@
     @include purple-btn;
 }
 
-button {
+.regular-btn {
     @include btn;
     margin-top: 15px;
 }

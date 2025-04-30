@@ -169,7 +169,7 @@ export function Signup() {
             }
             const res = await isUserExist(miniCredentials)
             if (!res) setStepIdx(prev => prev + 1)
-            else showUserMsg('שם או מייל קיים כבר במערכת')
+            else showUserMsg('מייל קיים כבר במערכת')
 
         } catch (error) {
             console.error('Error:', error);

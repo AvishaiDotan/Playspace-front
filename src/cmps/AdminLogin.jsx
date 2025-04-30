@@ -26,7 +26,7 @@ export function AdminLogin({ loggedinUser, handleSubmitAdminForm, credentials, h
                     <img className="input-img eye" onClick={onChangeInputType} src={eye} />
                 </div>
 
-                <button type="submit" disabled={!credentials.password} >כניסה למנהל</button>
+                <button className='regular-btn' type="submit" disabled={!credentials.password} >כניסה למנהל</button>
             </form>
         </section>
     )

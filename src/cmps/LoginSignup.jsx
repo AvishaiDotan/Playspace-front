@@ -54,12 +54,6 @@ export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEf
                 errors.email = 'כתובת האימייל אינה תקינה'
             }
 
-            // Show the first error message if there are any errors
-            // if (Object.keys(errors).length > 0) {
-            //     const firstError = Object.values(errors)[0]
-            //     showUserMsg(firstError)
-            // }
-
             return errors
         },
         onSubmit: (values) => {
@@ -71,6 +65,12 @@ export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEf
         formik.handleChange(ev)
         handleChange(ev)
     }
+
+    function clearInput(fieldName) {
+        formik.setFieldValue(fieldName, '')
+        handleChange({ target: { name: fieldName, value: '' } })
+    }
+
     return (
         <>
             <LoadingScreen useEffectFunc={useEffectFunc} companyIcon={companyIcon} />
@@ -87,7 +87,15 @@ export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEf
 
                     <div className="input-group">
                         <input placeholder="שם מלא" type="text" id="name" name="name" onChange={handleInputChange} onBlur={formik.handleBlur} value={formik.values.name} />
-                        {/* <input placeholder="שם מלא" type="text" id="name" name="name" onChange={handleInputChange} onBlur={formik.handleBlur} value={formik.values.name} required /> */}
+                        {formik.values.name && (
+                            <button 
+                                type="button" 
+                                className="clear-input-btn" 
+                                onClick={() => clearInput('name')}
+                            >
+                               X
+                            </button>
+                        )}
                         <img className="input-img user" src={user} />
                         {formik.touched.name && formik.errors.name && (
                             <div className="error">{formik.errors.name}</div>
@@ -96,15 +104,22 @@ export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEf
 
                     <div className="input-group">
                         <input placeholder="דוא״ל" type="email" id="email" name="email" onChange={handleInputChange} onBlur={formik.handleBlur} value={formik.values.email} />
-                        {/* <input placeholder="דוא״ל" type="email" id="email" name="email" onChange={handleInputChange} onBlur={formik.handleBlur} value={formik.values.email} required /> */}
+                        {formik.values.email && (
+                            <button 
+                                type="button" 
+                                className="clear-input-btn" 
+                                onClick={() => clearInput('email')}
+                            >
+                               X
+                            </button>
+                        )}
                         <img className="input-img email" src={email} />
-
                         {formik.touched.email && formik.errors.email && (
                             <div className="error">{formik.errors.email}</div>
                         )}
                     </div>
 
-                    <button type="submit">
+                    <button className='regular-btn' type="submit">
                         {isSignup ? "הירשם" : "בואו נתחיל!"}
                     </button>
 

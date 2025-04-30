@@ -1,0 +1,7 @@
+.input-group {
+    position: relative;
+}
+
+.input-group input {
+    padding-right: 40px;
+} 
