@@ -198,11 +198,11 @@ export function Signup() {
 
             {stepIdx === 1 &&
                 <section className="step-1">
-                    <FancyTitle title= "בחר את האווטאר שלך"/>
+                    <FancyTitle title="בחר את האווטאר שלך" />
 
                     <div className="avatar-container">
                         <div className="add-avatar" onClick={onToggleOpenUserImgAddModal}>
-                            {openUserImgAddModal && <UserImgAddModal isLoading={isLoading} media={credentials.media} onChangeFileInput={onChangeFileInput} onCloseModal={onCloseModal} />} 
+                            {openUserImgAddModal && <UserImgAddModal isLoading={isLoading} media={credentials.media} onChangeFileInput={onChangeFileInput} onCloseModal={onCloseModal} />}
                             <img src={plus} alt="הוסף אווטאר" />
                         </div>
                         {avatars.map((item, i) => (
@@ -220,13 +220,16 @@ export function Signup() {
                                     />
                                 )}
                                 {credentials.media?.url === item && (
-                                    <SelectedImg imgUrl={item} />
+                                    <div className="selected-avatar">
+                                        <img src={item} alt={`avatar-${i + 1}`} />
+                                    </div>
+                                    // <SelectedImg imgUrl={item} />
                                 )}
                             </div>
                         ))}
                     </div>
 
-                    <button className="big-btn"disabled={!(credentials.media?.url)} onClick={() => setStepIdx(prev => prev + 1)}>קדימה מתחילים!</button>
+                    <button className="big-btn" disabled={!(credentials.media?.url)} onClick={() => setStepIdx(prev => prev + 1)}>קדימה מתחילים!</button>
                 </section>}
 
             {
@@ -241,7 +244,6 @@ export function Signup() {
                                 <li key={group.id}
                                     className={credentials.groupId === group.id ? 'selected' : ''}
                                     onClick={() => setCredentials(prev => ({ ...prev, groupId: group.id }))}>
-
                                     {credentials.groupId === group.id && <img className="green-v" src={v} />}
                                     {group.name}
                                 </li>)}
