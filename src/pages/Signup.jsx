@@ -32,6 +32,7 @@ import { useEffectCloseModal } from '../customHooks/useEffectCloseModal'
 import { showUserMsg } from "../services/event-bus.service.js"
 import { SelectedImg } from "../cmps/SelectedImg.jsx"
 import { FancyTitle } from "../cmps/FancyTitle.jsx"
+import { GroupJoinModal } from "../cmps/GroupJoinModal.jsx"
 
 // work : http://localhost:5173/signup/80c6face-668b-4d14-82e8-08dc98ddb702
 // lifeSaver:
@@ -56,6 +57,9 @@ export function Signup() {
     const { isScreenOpen, onOpenScreen, onCloseScreen, } = useContext(ScreenOpenContext)
     useEffectToggleModal(onOpenScreen, onCloseScreen, [openUserImgAddModal])
     useEffectCloseModal(isScreenOpen, [onToggleOpenUserImgAddModal])
+
+    const [selectedGroup, setSelectedGroup] = useState(null)
+    const [isGroupModalOpen, setIsGroupModalOpen] = useState(false)
 
     const { gameId } = useParams()
     const navigate = useNavigate()
@@ -137,7 +141,7 @@ export function Signup() {
     }
 
     async function onSubmitSignupForm(ev) {
-        ev.preventDefault()
+        if (ev) ev.preventDefault()
         try {
             const user = await signup(credentials)
             const player = await getPlayer(gameId)
@@ -147,7 +151,6 @@ export function Signup() {
         } catch (error) {
             console.error('Error:', error);
         }
-
     }
 
     function resetSignup() {
@@ -247,7 +250,11 @@ export function Signup() {
                             {shallowGame.groups?.map((group, i) =>
                                 <li key={group.id}>
                                     <span>{group.name}</span>
-                                    <button onClick={() => setCredentials(prev => ({ ...prev, groupId: group.id }))}>הצטרף</button>
+                                    <button onClick={() => {
+                                        setSelectedGroup(group)
+                                        setIsGroupModalOpen(true)
+                                    }}>הצטרף</button>
+                                    {/* <button onClick={() => setCredentials(prev => ({ ...prev, groupId: group.id }))}>הצטרף</button> */}
                                 </li>)}
                         </ul>
                         {/* <ul className="groups-container">
@@ -260,7 +267,7 @@ export function Signup() {
                                 </li>)}
                         </ul> */}
 
-                        <button disabled={!(credentials.groupId)} onClick={onSubmitSignupForm}>התחל</button>
+                        {/* <button disabled={!(credentials.groupId)} onClick={onSubmitSignupForm}>התחל</button> */}
 
                     </>}
                     {!shallowGame.groups?.length && <> <p>
@@ -273,7 +280,15 @@ export function Signup() {
 
                     {/* {loggedinPlayer.groupId &&
                     <Link to={`/game/${credentials.gameId}`}>כניסה למשחק</Link>} */}
-
+                    {isGroupModalOpen && (
+                        <GroupJoinModal
+                            group={selectedGroup}
+                            icon={shallowGame?.icon}
+                            onClose={() => setIsGroupModalOpen(false)}
+                            onConfirm={(groupId) => setCredentials(prev => ({ ...prev, groupId }))}
+                            onSubmitSignupForm={onSubmitSignupForm}
+                        />
+                    )}
                 </section>
             }
         </section >

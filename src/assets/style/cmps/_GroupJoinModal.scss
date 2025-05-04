@@ -1,0 +1,61 @@
+.group-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    @include flex(row, center, center);
+    background: rgba(24, 11, 51, 0.82);
+    z-index: 1000;
+
+    .modal-content {
+        position: relative;
+        width: 205px;
+        background: #fff;
+        border-radius: 10px;
+        padding: 32px 24px;
+        text-align: center;
+
+        .sparkles-img-container {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+
+            .sparkles {
+                position: relative; // או absolute
+                z-index: 1; // נמוך יותר מ-sparkle3
+            }
+
+            .sparkle3 {
+                position: absolute;
+                top: -25px;
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 2; // גבוה יותר מ-sparkles
+            }
+
+
+        }
+
+        .modal-body {
+            @include flex(column, center, center, 15px);
+
+            .icon {
+                max-width: 100px; 
+                max-height: 60px;
+                width: auto;
+                height: auto;
+                object-fit: contain;
+            }
+
+            h2 {
+                color: rgba(67, 83, 241, 1);
+                font-family: 'EzerMeoded-Black';
+            }
+        }
+
+
+    }
+}
