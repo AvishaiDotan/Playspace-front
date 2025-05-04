@@ -21,6 +21,7 @@ import avatar8 from '../assets/img/avatar_8.png'
 import v from '../assets/img/green-v.png'
 import eye from '../assets/img/eye.png'
 import plus from '../assets/img/plus-white.png'
+import arrow from '../assets/img/arrow.png'
 import { LoginSignup } from "../cmps/LoginSignup.jsx"
 
 
@@ -159,6 +160,10 @@ export function Signup() {
         setStepIdx(prev => prev + 1)
     }
 
+    function goBack() {
+        setStepIdx(prev => prev - 1)
+    }
+
     async function onSignUpNameEmail() {
         try {
             const { email, name } = credentials
@@ -235,11 +240,17 @@ export function Signup() {
             {
                 stepIdx === 2 && shallowGame &&
                 <section className="step-2">
+                    <img className="arrow" src={arrow} alt="חזרה" onClick={goBack} />
                     {shallowGame.groups && <>
-                        <div className="header">
-                            <span>Choose a group</span>
-                        </div>
+                        <FancyTitle title="בחר את הקבוצה שלך" />
                         <ul className="groups-container">
+                            {shallowGame.groups?.map((group, i) =>
+                                <li key={group.id}>
+                                    <span>{group.name}</span>
+                                    <button onClick={() => setCredentials(prev => ({ ...prev, groupId: group.id }))}>הצטרף</button>
+                                </li>)}
+                        </ul>
+                        {/* <ul className="groups-container">
                             {shallowGame.groups?.map((group, i) =>
                                 <li key={group.id}
                                     className={credentials.groupId === group.id ? 'selected' : ''}
@@ -247,15 +258,15 @@ export function Signup() {
                                     {credentials.groupId === group.id && <img className="green-v" src={v} />}
                                     {group.name}
                                 </li>)}
-                        </ul>
+                        </ul> */}
 
-                        <button disabled={!(credentials.groupId)} onClick={onSubmitSignupForm}>Start</button>
+                        <button disabled={!(credentials.groupId)} onClick={onSubmitSignupForm}>התחל</button>
 
                     </>}
                     {!shallowGame.groups?.length && <> <p>
                         במשחק זה אין קבוצות
                     </p>
-                        <button onClick={onSubmitSignupForm}>Start</button>
+                        <button onClick={onSubmitSignupForm}>התחל</button>
 
                     </>}
                     {/* onclick=> save the group and start game */}

@@ -97,7 +97,8 @@
                     justify-content: center;
 
                     img {
-                        width: 93px;
+                        transform: translateY(-5px);
+                        // width: 93px;
                     }
                 }
             }
@@ -109,56 +110,102 @@
     //////////////////////! step-2 ///////////////////////
 
     .step-2 {
+        @include flex(column, center, start);
+        margin-top: 20px;
         width: 100%;
         max-width: 400px;
-        padding: 10px;
+        min-height: 100vh;
+        direction: rtl;
 
-        .header {
-            margin-top: 28px;
-
-            span {
-                font-weight: 600;
-                color: var(--primary-35);
-            }
+        .arrow {
+            top: 30px;
+            left: 30px;
+            position: absolute;
+            cursor: pointer;
         }
 
         ul.groups-container {
-            margin-top: 24px;
-            // max-height: 468px;
-            @include flex(column, stretch, start, 10px);
-            // overflow-y: scroll;
+            @include flex(column, center, center, 10px);
+            margin-top: 20px;
 
             li {
-                position: relative;
-                // width: 340px;
-                height: 71px;
-                width: 100%;
+                @include flex(row, center, space-between);
+                width: 296px;
+                padding: 20px;
                 border-radius: 10px;
-                @include flex(row, center, center);
-                cursor: pointer;
-                background: linear-gradient(119.9deg, #f2f2f2 4.09%, #e9f0fc 97.2%);
+                background-color: rgba(255, 255, 255, 1);
 
-                font-weight: 600;
-                line-height: 24px;
-
-                &.selected {
-                    border: 2.5px solid #54ca7c;
+                &:hover {
+                    color: white;
+                    background-color: rgba(67, 83, 241, 1);
                 }
 
-                img.green-v {
-                    position: absolute;
-                    width: 30px;
-                    height: 30px;
-                    top: 18px;
-                    right: 10px;
+                button {
+                    width: 75px;
+                    color: white;
+                    background-color: rgba(124, 141, 255, 1);
+                    font-weight: 900;
+                    font-size: rem(15px);
+                    line-height: 25px;
+                    border-radius: 10px;
+                    border: none;
                 }
+
             }
         }
 
-        button {
-            @include btn;
-            margin-top: 20px;
-        }
+
+        //         width: 100%;
+        //         max-width: 400px;
+        //         padding: 10px;
+
+        //         .header {
+        //             margin-top: 28px;
+
+        //             span {
+        //                 font-weight: 600;
+        //                 color: var(--primary-35);
+        //             }
+        //         }
+
+        //         ul.groups-container {
+        //             margin-top: 24px;
+        //             // max-height: 468px;
+        //             @include flex(column, center, center, 10px);
+        //             // @include flex(column, stretch, start, 10px);
+        //             // overflow-y: scroll;
+
+        //             li {
+        //                 position: relative;
+        //                 // width: 340px;
+        //                 height: 71px;
+        //                 width: 100%;
+        //                 border-radius: 10px;
+        //                 @include flex(row, center, center);
+        //                 cursor: pointer;
+        //                 background: linear-gradient(119.9deg, #f2f2f2 4.09%, #e9f0fc 97.2%);
+
+        //                 font-weight: 600;
+        //                 line-height: 24px;
+
+        //                 &.selected {
+        //                     border: 2.5px solid #54ca7c;
+        //                 }
+
+        //                 img.green-v {
+        //                     position: absolute;
+        //                     width: 30px;
+        //                     height: 30px;
+        //                     top: 18px;
+        //                     right: 10px;
+        //                 }
+        //             }
+        //         }
+
+        //         button {
+        //             @include btn;
+        //             margin-top: 20px;
+        //         }
     }
 }
 
