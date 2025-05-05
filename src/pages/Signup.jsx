@@ -250,10 +250,11 @@ export function Signup() {
                             {shallowGame.groups?.map((group, i) =>
                                 <li key={group.id}>
                                     <span>{group.name}</span>
-                                    <button onClick={() => {
-                                        setSelectedGroup(group)
-                                        setIsGroupModalOpen(true)
-                                    }}>הצטרף</button>
+                                    <button className="blue-btn"
+                                        onClick={() => {
+                                            setSelectedGroup(group)
+                                            setIsGroupModalOpen(true)
+                                        }}>הצטרף</button>
                                     {/* <button onClick={() => setCredentials(prev => ({ ...prev, groupId: group.id }))}>הצטרף</button> */}
                                 </li>)}
                         </ul>

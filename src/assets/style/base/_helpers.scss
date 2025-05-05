@@ -1,6 +1,6 @@
 .rtl {
     direction: rtl;
-    font-family: "Rubik", sans-serif;
+    // font-family: "Rubik", sans-serif;
 }
 
 .clr1 {
@@ -30,4 +30,8 @@
 
 .big-btn {
     @include btn(62px, 310px);
+}
+
+.blue-btn {
+    @include blue-btn;
 }

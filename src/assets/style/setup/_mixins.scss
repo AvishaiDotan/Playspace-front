@@ -97,6 +97,17 @@
 }
 
 
+@mixin blue-btn() {
+    width: 75px;
+    color: white;
+    background-color: rgba(124, 141, 255, 1);
+    font-weight: 900;
+    font-size: rem(15px);
+    line-height: 25px;
+    border-radius: 10px;
+    border: none;
+}
+
 @mixin purple-btn($type: regular) {
     background-color: purple;
     color: white;

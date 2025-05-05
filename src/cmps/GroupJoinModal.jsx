@@ -4,6 +4,13 @@ import sparkles from '../assets/img/sparkles.png'
 export function GroupJoinModal({ group, icon, onClose, onConfirm, onSubmitSignupForm }) {
     if (!group) return
 
+    function handleJoinGroup() {
+        console.log('group:', group);
+        onConfirm(group.id)
+        onSubmitSignupForm()
+        onClose()
+    }
+
     return (
         <div className="group-modal">
             <div className="modal-content">
@@ -15,15 +22,7 @@ export function GroupJoinModal({ group, icon, onClose, onConfirm, onSubmitSignup
                     {icon && <img className="icon" src={icon} alt="icon" />}
                     <h2>איזה כיף!</h2>
                     <p>הצטרפת לקבוצה {group.name}!</p>
-                    <button onClick={() => {
-                        console.log('group:', group);
-                        
-                        onConfirm(group.id)
-                        onSubmitSignupForm()
-                        onClose()
-                    }}>
-                        המשך
-                    </button>
+                    <button className="blue-btn"onClick={handleJoinGroup}>המשך</button>
                 </div>
             </div>
         </div>
