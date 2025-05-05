@@ -2,27 +2,24 @@
   @include flex(column, center, start);
   height: 100%;
   overflow: hidden;
-  @include for-mobile-layout {
-  }
+
+  @include for-mobile-layout {}
 
   main {
     position: relative;
-    z-index: 1;
     width: 100%;
     min-width: 250px;
     height: 100%;
     overflow: hidden;
-    
+
     .main-container {
       height: 100%;
       overflow: hidden;
     }
-    
-    @include for-narrow-layout {
-    }
 
-    @include for-mobile-layout {
-    }
+    @include for-narrow-layout {}
+
+    @include for-mobile-layout {}
   }
 
   .screen {
@@ -33,7 +30,8 @@
     padding: 0px;
     width: 100%;
     height: 100%;
-    background-color: rgba(85, 84, 84, 0.441);
+    background-color: rgba(24, 11, 51, 0.82);
+    // background-color: rgba(85, 84, 84, 0.441);
     display: none;
   }
 

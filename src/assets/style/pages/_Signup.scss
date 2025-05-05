@@ -47,20 +47,18 @@
 
     //////////////////////! step-1 ///////////////////////
     .step-1 {
-        @include flex(column, center, space-around);
-        padding: 10px;
+        @include flex(column, center, center);
         width: 100%;
         max-width: 400px;
         min-height: 100vh;
-
-
+        
         .avatar-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 16px;
             justify-items: center;
             align-items: center;
-            margin: 24px 0;
+            margin-block: 30px;
 
             .add-avatar {
                 @include flex(row, center, center);
@@ -68,11 +66,8 @@
                 height: 93px;
                 background-color: rgba(62, 85, 240, 1);
                 border-radius: 50%;
-
-            }
-
-            .plus {
                 cursor: pointer;
+
             }
 
             .avatar-item {

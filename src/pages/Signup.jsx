@@ -210,9 +210,9 @@ export function Signup() {
 
                     <div className="avatar-container">
                         <div className="add-avatar" onClick={onToggleOpenUserImgAddModal}>
-                            {openUserImgAddModal && <UserImgAddModal isLoading={isLoading} media={credentials.media} onChangeFileInput={onChangeFileInput} onCloseModal={onCloseModal} />}
                             <img src={plus} alt="הוסף אווטאר" />
                         </div>
+                        {openUserImgAddModal && <UserImgAddModal isLoading={isLoading} media={credentials.media} onChangeFileInput={onChangeFileInput} onCloseModal={onCloseModal} />}
                         {avatars.map((item, i) => (
                             <div className="avatar-item" key={i}>
                                 {credentials.media?.url !== item && (

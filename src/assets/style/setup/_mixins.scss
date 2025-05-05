@@ -129,20 +129,24 @@
 
 @mixin modal() {
     position: fixed;
-    bottom: 50%;
-    left: 50%;
-    translate: -50% 50%;
+    top: 0; 
+    bottom: 0;        
+    left: 0; 
+    right: 0;
+    // bottom: 50%;
+    // left: 50%;
+    // translate: -50% 50%;
     z-index: 20;
-    width: 380px;
+    // width: 380px;
     border-radius: 10px;
 
-    @include for-mobile-layout {
-        // position: absolute;
-        bottom: 0px;
-        left: 0;
-        translate: 0;
-        border-radius: 30px 30px 0 0;
-        z-index: 10;
-        width: calc(100%);
-    }
+    // @include for-mobile-layout {
+    //     // position: absolute;
+    //     bottom: 0px;
+    //     left: 0;
+    //     translate: 0;
+    //     // border-radius: 30px 30px 0 0;
+    //     z-index: 10;
+    //     width: calc(100%);
+    // }
 }
