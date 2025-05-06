@@ -4,12 +4,13 @@ const BASE_URL = process.env.NODE_ENV === 'production'
     ? '/api/'
     : 'https://playspace.co.il/api/'
 
+// const BASE_URL = '/api/' //Change to run ngrok
+
 const axios = Axios.create({
     withCredentials: true,
-    headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*'
-    }
+    // headers: {
+    //     'Content-Type': 'application/json',
+    // }
 })
 
 export const httpService = {

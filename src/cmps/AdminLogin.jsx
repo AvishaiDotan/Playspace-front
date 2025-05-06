@@ -1,5 +1,5 @@
-import playspaceLogoBlue from '../assets/img/playspace-logo-blue.png'
-import playspaceLogoNew from '../assets/img/playspace-logo-new.png'
+// import playspaceLogoBlue from '../assets/img/playspace-logo-blue.png'
+import playspaceLogo from '../assets/img/playspace-logo-new.png'
 import password from '../assets/img/password.png'
 import eye from '../assets/img/eye.png'
 import { useRef } from 'react'
@@ -16,7 +16,8 @@ export function AdminLogin({ loggedinUser, handleSubmitAdminForm, credentials, h
     return (
         <section className="admin-login">
             {/* <img className="playspace-logo-blue-admin" src={playspaceLogoBlue} /> */}
-            <img className="playspace-logo-new" src={playspaceLogoNew} />
+            {/* <img className="playspace-logo-new" src={playspaceLogoNew} /> */}
+            <img className="playspace-logo" src={playspaceLogo} />
 
             <form className="admin-login-form" onSubmit={handleSubmitAdminForm}>
                 <span>שלום {loggedinUser.name}</span>

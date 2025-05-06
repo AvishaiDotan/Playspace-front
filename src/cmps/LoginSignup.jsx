@@ -6,7 +6,7 @@ import { showUserMsg } from '../services/event-bus.service';
 
 import { LoadingScreen } from './LoadingScreen'
 
-import playspaceLogoNew from '../assets/img/playspace-logo-new.png'
+import playspaceLogo from '../assets/img/playspace-logo-new.png'
 import sparkleIcon from '../assets/img/sparkle.png'
 import user from '../assets/img/user-new.png'
 import email from '../assets/img/email-new.png'
@@ -80,7 +80,8 @@ export function LoginSignup({ credentials, handleChange, onBtnClick, text, useEf
                         <img src={sparkleIcon} alt="sparkle" />
                     </div>
                 ))}
-                <img className="playspace-logo-new" src={playspaceLogoNew} />
+                <img className="playspace-logo" src={playspaceLogo} />
+                {/* <img className="playspace-logo-new" src={playspaceLogo} /> */}
 
                 <form onSubmit={formik.handleSubmit} className="signup-form" id="signupForm" noValidate>
                     <span>{text}</span>

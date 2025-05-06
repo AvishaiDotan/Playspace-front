@@ -1,17 +1,15 @@
 .login-signup,
 .admin-login {
     @include flex(column, center, center);
-    height: 100vh;
+    // height: 100vh;
+    min-height: 100dvh;
     overflow: hidden;
-    // margin-top: 142px;
-    // width: 100%;
-    // max-width: 400px;
-    // min-width: 250px;
 
     .sparkle {
         position: absolute;
         width: 15px;
         height: 14px;
+        transform: translateY(0);
         pointer-events: none;
 
         &.sparkle1 {
@@ -51,11 +49,11 @@
         }
     }
 
-    .playspace-logo-new {
-        // width: 132px;
-        width: var(--logo-width);
-        margin-bottom: 20px;
-    }
+    // .playspace-logo-new {
+    //     // width: 132px;
+    //     width: var(--logo-width);
+    //     margin-bottom: 20px;
+    // }
 
     .signup-form,
     .admin-login-form {
@@ -70,6 +68,7 @@
             line-height: 29px;
             color: var(--primary-35);
             direction: rtl;
+            
 
             // &.error {
             //     background-color: black;

@@ -1,56 +1,29 @@
 .signup,
 .login {
+    //  @include flex(column, center, center);
 
-    .playspace-logo,
-    .playspace-logo-blue {
+    .playspace-logo {
+
         animation-delay: 800ms;
         animation-timing-function: cubic-bezier(0.7, -0.4, 0.4, 1.4);
         animation-duration: 3500ms;
         animation-fill-mode: forwards;
-        // width: 200px;
+        position: relative;
+        margin-top: 15vh;
+        animation-name: smart1;
         width: calc(var(--logo-width) * 1.5);
         // height: 35.85px;
     }
 
 
 
-    .playspace-logo {
-        animation-name: smart;
-        position: relative;
-
-        @include for-short-layout {
-            animation-name: smart1;
-        }
-    }
-
-    .playspace-logo-blue {
-        animation-name: smart2;
-        position: absolute;
-        left: calc(50% - 200px / 2);
-        top: calc(50% - 35.85px / 2 - 50px);
-        z-index: 5;
-
-        @include for-short-layout {
-            animation-name: smart3;
-        }
-    }
-
-    .playspace-logo-blue-admin {
-        position: absolute;
-        top: calc((50% - 32px / 2) - 220px);
-        left: calc(50% - 178.54px / 2);
-        width: 178.54px;
-        height: 32px;
-    }
-
-    @include flex(column, center, center);
-
     //////////////////////! step-1 ///////////////////////
     .step-1 {
-        @include flex(column, center, center);
+        @include flex(column, center, start);
+        margin-top: 40px;
         width: 100%;
         max-width: 400px;
-        min-height: 100vh;
+        min-height: 100dvh;
         
         .avatar-container {
             display: grid;
@@ -106,10 +79,10 @@
 
     .step-2 {
         @include flex(column, center, start);
-        margin-top: 20px;
+        margin-top: 40px;
         width: 100%;
         max-width: 400px;
-        min-height: 100vh;
+        min-height: 100dvh;
         direction: rtl;
 
         .arrow {
@@ -139,58 +112,6 @@
             }
         }
 
-
-        //         width: 100%;
-        //         max-width: 400px;
-        //         padding: 10px;
-
-        //         .header {
-        //             margin-top: 28px;
-
-        //             span {
-        //                 font-weight: 600;
-        //                 color: var(--primary-35);
-        //             }
-        //         }
-
-        //         ul.groups-container {
-        //             margin-top: 24px;
-        //             // max-height: 468px;
-        //             @include flex(column, center, center, 10px);
-        //             // @include flex(column, stretch, start, 10px);
-        //             // overflow-y: scroll;
-
-        //             li {
-        //                 position: relative;
-        //                 // width: 340px;
-        //                 height: 71px;
-        //                 width: 100%;
-        //                 border-radius: 10px;
-        //                 @include flex(row, center, center);
-        //                 cursor: pointer;
-        //                 background: linear-gradient(119.9deg, #f2f2f2 4.09%, #e9f0fc 97.2%);
-
-        //                 font-weight: 600;
-        //                 line-height: 24px;
-
-        //                 &.selected {
-        //                     border: 2.5px solid #54ca7c;
-        //                 }
-
-        //                 img.green-v {
-        //                     position: absolute;
-        //                     width: 30px;
-        //                     height: 30px;
-        //                     top: 18px;
-        //                     right: 10px;
-        //                 }
-        //             }
-        //         }
-
-        //         button {
-        //             @include btn;
-        //             margin-top: 20px;
-        //         }
     }
 }
 
@@ -204,7 +125,8 @@
     }
 
     100% {
-        top: -170px;
+        top: -15dvh;
+        // top: -170px;
         // width: 178.54px;
         // width: var(--logo-width);
 
@@ -212,15 +134,16 @@
     }
 }
 
-// for short layout
 @keyframes smart1 {
     0% {
-        top: 0px;
+        // top: 0px;
+        top: 0;
     }
 
     100% {
         // top: 50px;
-        top: -130px;
+        // top: -130px;
+        top: -10dvh;
         // width: 178.54px;
         width: var(--logo-width);
         // height: 32px;
@@ -233,7 +156,8 @@
     }
 
     100% {
-        top: calc((50% - 32px / 2) - 220px);
+        // top: calc((50% - 32px / 2) - 220px);
+        top: -15dvh;
         left: calc(50% - 178.54px / 2);
         width: 178.54px;
         height: 32px;
