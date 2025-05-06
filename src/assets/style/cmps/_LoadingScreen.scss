@@ -6,9 +6,7 @@
     padding: 0px;
     width: 100%;
     height: 100%;
-    color: white;
-    background: #2769e1;
-    // transition: background-color 1s;
+    background: white;
 
     &.fade {
         opacity: 0;
@@ -16,36 +14,13 @@
         z-index: 0;
     }
 
-    .vector {
-        position: absolute;
-        background: #0c2655;
-        filter: blur(128px);
-    }
-    .vector1 {
-        width: 534px;
-        height: 500px;
-        left: -267px;
-        top: -278px;
-    }
-    .vector2 {
-        width: 558px;
-        height: 486px;
-        right: -267px;
-        top: 266px;
-    }
-
     .content {
         position: absolute;
         left: calc(50% - 220px / 2);
         top: calc(50% - 135px / 2);
-        z-index: 10;
+        z-index: 11;
 
         @include flex(column, center, space-between, 25px);
-    }
-
-    .x {
-        width: 22px;
-        height: 22px;
     }
 
     .company-logo-container {
@@ -54,6 +29,7 @@
 
         img {
             width: 70%;
+            filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.4));
         }
     }
 }

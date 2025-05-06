@@ -3,19 +3,26 @@
     width: 100%;
     height: 100%;
     @include flex(row, center, center);
+
+    .v-container {
+        position: absolute;
+        bottom: 10px;
+        left: 0px;
+        width: 28px;
+        height: 28px;
+        background: rgba(87, 106, 224, 1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
     img {
-        &.green-v {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            top: 0px;
-            left: 85px;
-        }
+
         &.media-url {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            border: 2.5px solid #54ca7c;
         }
     }
 }

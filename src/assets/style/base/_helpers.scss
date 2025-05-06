@@ -1,14 +1,16 @@
 .rtl {
     direction: rtl;
-    font-family: "Rubik", sans-serif;
+    // font-family: "Rubik", sans-serif;
 }
 
 .clr1 {
     background-color: var(--clr-0);
 }
+
 .clr2 {
     background-color: var(--clr-1);
 }
+
 .clr3 {
     background-color: var(--clr-2);
 }
@@ -19,4 +21,23 @@
 
 .purple-btn {
     @include purple-btn;
+}
+
+.regular-btn {
+    @include btn;
+    margin-top: 15px;
+}
+
+.big-btn {
+    @include btn(62px, 310px);
+    position: fixed;  
+    bottom: 20px;     
+    left: 20px;     
+    right: 20px;     
+    width: auto;      
+
+}
+
+.blue-btn {
+    @include blue-btn;
 }

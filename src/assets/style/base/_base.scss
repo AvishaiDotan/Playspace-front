@@ -8,8 +8,7 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   margin: 0;
   padding: 0;
-  // font-family: Poppins;
-  font-family: "Rubik", sans-serif;
+  font-family: 'EzerMeoded', sans-serif;
 }
 
 :root {
@@ -23,9 +22,13 @@
 
   // --new-black:
   --white: #fff;
-  --dark-grey: #808080;
-  --primary: #1f64e0;
-  --primary-35: #16469d;
+  // --dark-grey: #808080;
+  --dark-grey: rgb(198, 186, 186);
+
+  // --primary: #1f64e0;
+  --primary: rgba(162, 170, 248, 1);
+  // --primary-35: #16469d;
+  --primary-35: rgba(138, 138, 138, 1);
   --primary-95: #e9effc;
 
   --gradient-clr-1: #4c83e6;
@@ -33,18 +36,27 @@
 
   --gradient: linear-gradient(106.96deg, var(--gradient-clr-1) 7.65%, var(--gradient-clr-2) 94.96%);
 
-  --border-primary: 1.5px solid var(--primary);
+  --border-primary: 4px solid var(--primary);
+  // --border-primary: 1.5px solid var(--primary);
+
+  --logo-width: 132px;
 }
 
 html {
   // font-family: Poppins;
   font-style: normal;
   font-weight: 400;
+  height: 100%;
+  overflow: hidden;
   @include for-mobile-layout {
   }
 }
 
 body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 h1,

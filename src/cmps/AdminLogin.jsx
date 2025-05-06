@@ -1,4 +1,5 @@
 import playspaceLogoBlue from '../assets/img/playspace-logo-blue.png'
+import playspaceLogoNew from '../assets/img/playspace-logo-new.png'
 import password from '../assets/img/password.png'
 import eye from '../assets/img/eye.png'
 import { useRef } from 'react'
@@ -14,15 +15,18 @@ export function AdminLogin({ loggedinUser, handleSubmitAdminForm, credentials, h
 
     return (
         <section className="admin-login">
-            <img className="playspace-logo-blue-admin" src={playspaceLogoBlue} />
+            {/* <img className="playspace-logo-blue-admin" src={playspaceLogoBlue} /> */}
+            <img className="playspace-logo-new" src={playspaceLogoNew} />
 
             <form className="admin-login-form" onSubmit={handleSubmitAdminForm}>
-                <span>Hello {loggedinUser.name}</span>
-                <img className="input-img password" src={password} />
-                <img className="input-img eye" onClick={onChangeInputType} src={eye} />
-                <input ref={input} placeholder="Password" type="password" id="password" name="password" value={credentials.password} onChange={handleChange} required />
+                <span>שלום {loggedinUser.name}</span>
+                <div className="input-group">
+                    <input ref={input} placeholder="סיסמה" type="password" id="password" name="password" value={credentials.password} onChange={handleChange} required />
+                    <img className="input-img password" src={password} />
+                    <img className="input-img eye" onClick={onChangeInputType} src={eye} />
+                </div>
 
-                <button type="submit" disabled={!credentials.password} >Admin Login</button>
+                <button className='regular-btn' type="submit" disabled={!credentials.password} >כניסה למנהל</button>
             </form>
         </section>
     )

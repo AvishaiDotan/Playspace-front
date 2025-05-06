@@ -1,14 +1,18 @@
 .signup,
 .login {
+
     .playspace-logo,
     .playspace-logo-blue {
         animation-delay: 800ms;
         animation-timing-function: cubic-bezier(0.7, -0.4, 0.4, 1.4);
         animation-duration: 3500ms;
         animation-fill-mode: forwards;
-        width: 200px;
-        height: 35.85px;
+        // width: 200px;
+        width: calc(var(--logo-width) * 1.5);
+        // height: 35.85px;
     }
+
+
 
     .playspace-logo {
         animation-name: smart;
@@ -18,6 +22,7 @@
             animation-name: smart1;
         }
     }
+
     .playspace-logo-blue {
         animation-name: smart2;
         position: absolute;
@@ -37,97 +42,155 @@
         width: 178.54px;
         height: 32px;
     }
+
     @include flex(column, center, center);
 
     //////////////////////! step-1 ///////////////////////
     .step-1 {
-        padding: 10px;
+        @include flex(column, center, center);
         width: 100%;
         max-width: 400px;
-        // @include flex(column, stretch, center, 10px);
-        .header {
-            margin-top: 28px;
-            @include flex(row, center, space-between, 10px);
-            .select {
-                font-weight: 600;
-                color: var(--primary-35);
-            }
-            .plus {
-                width: 29px;
-                height: 29px;
-                cursor: pointer;
-            }
-        }
+        min-height: 100vh;
+        
         .avatar-container {
-            margin-top: 15px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            justify-items: center;
+            align-items: center;
+            margin-block: 30px;
 
-            .carousel-container {
-                height: 139px;
-                border-radius: 10px;
-                background-color: var(--primary-95);
-                margin-bottom: 12px;
-                padding: 10px 8px;
+            .add-avatar {
+                @include flex(row, center, center);
+                width: 93px;
+                height: 93px;
+                background-color: rgba(62, 85, 240, 1);
+                border-radius: 50%;
+                cursor: pointer;
 
-                span {
-                    font-size: 14px;
-                    font-weight: 600;
+            }
+
+            .avatar-item {
+                width: 93px;
+                position: relative;
+
+                img {
+                    cursor: pointer;
+                }
+
+                .selected-avatar {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 116px;
+                    height: 116px;
+                    background: rgba(162, 170, 248, 1);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        transform: translateY(-5px);
+                        // width: 93px;
+                    }
                 }
             }
 
-            button {
-                @include btn;
-                margin-top: 15px;
-            }
         }
+
     }
+
     //////////////////////! step-2 ///////////////////////
 
     .step-2 {
+        @include flex(column, center, start);
+        margin-top: 20px;
         width: 100%;
         max-width: 400px;
-        padding: 10px;
-        .header {
-            margin-top: 28px;
-            span {
-                font-weight: 600;
-                color: var(--primary-35);
-            }
+        min-height: 100vh;
+        direction: rtl;
+
+        .arrow {
+            top: 30px;
+            left: 30px;
+            position: absolute;
+            cursor: pointer;
         }
+
         ul.groups-container {
-            margin-top: 24px;
-            // max-height: 468px;
-            @include flex(column, stretch, start, 10px);
-            // overflow-y: scroll;
+            @include flex(column, center, center, 10px);
+            margin-top: 20px;
 
             li {
-                position: relative;
-                // width: 340px;
-                height: 71px;
-                width: 100%;
+                @include flex(row, center, space-between);
+                width: 296px;
+                padding: 20px;
                 border-radius: 10px;
-                @include flex(row, center, center);
-                cursor: pointer;
-                background: linear-gradient(119.9deg, #f2f2f2 4.09%, #e9f0fc 97.2%);
+                background-color: rgba(255, 255, 255, 1);
 
-                font-weight: 600;
-                line-height: 24px;
+                &:hover {
+                    color: white;
+                    background-color: rgba(67, 83, 241, 1);
+                }
 
-                &.selected {
-                    border: 2.5px solid #54ca7c;
-                }
-                img.green-v {
-                    position: absolute;
-                    width: 30px;
-                    height: 30px;
-                    top: 18px;
-                    right: 10px;
-                }
+
             }
         }
-        button {
-            @include btn;
-            margin-top: 20px;
-        }
+
+
+        //         width: 100%;
+        //         max-width: 400px;
+        //         padding: 10px;
+
+        //         .header {
+        //             margin-top: 28px;
+
+        //             span {
+        //                 font-weight: 600;
+        //                 color: var(--primary-35);
+        //             }
+        //         }
+
+        //         ul.groups-container {
+        //             margin-top: 24px;
+        //             // max-height: 468px;
+        //             @include flex(column, center, center, 10px);
+        //             // @include flex(column, stretch, start, 10px);
+        //             // overflow-y: scroll;
+
+        //             li {
+        //                 position: relative;
+        //                 // width: 340px;
+        //                 height: 71px;
+        //                 width: 100%;
+        //                 border-radius: 10px;
+        //                 @include flex(row, center, center);
+        //                 cursor: pointer;
+        //                 background: linear-gradient(119.9deg, #f2f2f2 4.09%, #e9f0fc 97.2%);
+
+        //                 font-weight: 600;
+        //                 line-height: 24px;
+
+        //                 &.selected {
+        //                     border: 2.5px solid #54ca7c;
+        //                 }
+
+        //                 img.green-v {
+        //                     position: absolute;
+        //                     width: 30px;
+        //                     height: 30px;
+        //                     top: 18px;
+        //                     right: 10px;
+        //                 }
+        //             }
+        //         }
+
+        //         button {
+        //             @include btn;
+        //             margin-top: 20px;
+        //         }
     }
 }
 
@@ -135,22 +198,32 @@
     0% {
         top: 0px;
     }
+
+    50% {
+        width: var(--logo-width)
+    }
+
     100% {
         top: -170px;
-        width: 178.54px;
-        height: 32px;
+        // width: 178.54px;
+        // width: var(--logo-width);
+
+        // height: 32px;
     }
 }
+
 // for short layout
 @keyframes smart1 {
     0% {
         top: 0px;
     }
+
     100% {
         // top: 50px;
         top: -130px;
-        width: 178.54px;
-        height: 32px;
+        // width: 178.54px;
+        width: var(--logo-width);
+        // height: 32px;
     }
 }
 
@@ -158,6 +231,7 @@
     0% {
         top: calc(50% - 35.85px / 2 - 50px);
     }
+
     100% {
         top: calc((50% - 32px / 2) - 220px);
         left: calc(50% - 178.54px / 2);
@@ -171,6 +245,7 @@
     0% {
         top: calc(50% - 35.85px / 2 - 50px);
     }
+
     100% {
         // top: calc((50% - 32px / 2) - 220px);
         top: 50px;

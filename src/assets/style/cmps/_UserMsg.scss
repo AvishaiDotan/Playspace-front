@@ -1,10 +1,48 @@
+// .user-msg {
+//     position: fixed;
+//     top: 0px;
+//     width: 100%;
+//     z-index: 20;
+//     background-color: black;
+//     color: white;
+//     padding: 6px;
+//     text-align: center;
+// }
+
+// Currently the design is only for an error message.
+
 .user-msg {
     position: fixed;
-    top: 0px;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffebee;
+    color: #b71c1c;
+    padding: 8px 12px;
+    font-weight: 400;
+    font-size: 14px;
+    border-radius: 10px;
+    border: 1px solid #d32f2f;
+    margin-top: 4px;
     width: 100%;
-    z-index: 20;
-    background-color: black;
-    color: white;
-    padding: 6px;
-    text-align: center;
+    max-width: 250px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: fadeIn 0.2s ease-in-out;
+    z-index: 10;
+    direction: rtl;
+
+    &::before {
+        content: "!";
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 16px;
+        height: 16px;
+        background-color: #b71c1c;
+        color: white;
+        padding: 2px;
+        border-radius: 50%;
+    }
 }

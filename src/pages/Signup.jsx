@@ -9,33 +9,19 @@ import { getShallowGameById } from "../store/actions/game.action"
 import { Carousel } from '../cmps/Carousel'
 import { UserImgAddModal } from "../cmps/UserImgAddModal"
 
-import avatar1 from '../assets/img/avatar1.png'
-import avatar2 from '../assets/img/avatar2.png'
-import avatar3 from '../assets/img/avatar3.png'
-import avatar4 from '../assets/img/avatar4.png'
-import avatar5 from '../assets/img/avatar5.png'
-import avatar6 from '../assets/img/avatar6.png'
-import avatar7 from '../assets/img/avatar7.png'
-import avatar8 from '../assets/img/avatar8.png'
-import avatar9 from '../assets/img/avatar9.png'
-import avatar10 from '../assets/img/avatar10.png'
-import avatar11 from '../assets/img/avatar11.png'
-import avatar12 from '../assets/img/avatar12.png'
-import avatar13 from '../assets/img/avatar13.png'
-import avatar14 from '../assets/img/avatar14.png'
-import avatar15 from '../assets/img/avatar15.png'
-import avatar16 from '../assets/img/avatar16.png'
-import avatar17 from '../assets/img/avatar17.jpg'
-import avatar18 from '../assets/img/avatar18.jpg'
-import avatar19 from '../assets/img/avatar19.jpg'
-import avatar20 from '../assets/img/avatar20.jpg'
-import avatar21 from '../assets/img/avatar21.jpg'
-import avatar22 from '../assets/img/avatar22.jpg'
-import avatar23 from '../assets/img/avatar23.jpg'
-import avatar24 from '../assets/img/avatar24.jpg'
+import avatar1 from '../assets/img/avatar_1.png'
+import avatar2 from '../assets/img/avatar_2.png'
+import avatar3 from '../assets/img/avatar_3.png'
+import avatar4 from '../assets/img/avatar_4.png'
+import avatar5 from '../assets/img/avatar_5.png'
+import avatar6 from '../assets/img/avatar_6.png'
+import avatar7 from '../assets/img/avatar_7.png'
+import avatar8 from '../assets/img/avatar_8.png'
+
 import v from '../assets/img/green-v.png'
 import eye from '../assets/img/eye.png'
-import plus from '../assets/img/plus.png'
+import plus from '../assets/img/plus-white.png'
+import arrow from '../assets/img/arrow.png'
 import { LoginSignup } from "../cmps/LoginSignup.jsx"
 
 
@@ -44,6 +30,9 @@ import { useToggle } from '../customHooks/useToggle'
 import { useEffectToggleModal } from '../customHooks/useEffectToggleModal'
 import { useEffectCloseModal } from '../customHooks/useEffectCloseModal'
 import { showUserMsg } from "../services/event-bus.service.js"
+import { SelectedImg } from "../cmps/SelectedImg.jsx"
+import { FancyTitle } from "../cmps/FancyTitle.jsx"
+import { GroupJoinModal } from "../cmps/GroupJoinModal.jsx"
 
 // work : http://localhost:5173/signup/80c6face-668b-4d14-82e8-08dc98ddb702
 // lifeSaver:
@@ -61,14 +50,16 @@ export function Signup() {
     const [stepIdx, setStepIdx] = useState(utilService.loadFromStorage('signupStepIdx') || 0)
     const [isLoading, setIsLoading] = useState(false)
 
-    const avatars1 = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8]
-    const avatars2 = [avatar9, avatar10, avatar11, avatar12, avatar13, avatar14, avatar15, avatar16]
-    const avatars3 = [avatar17, avatar18, avatar19, avatar20, avatar21, avatar22, avatar23, avatar24]
+    const avatars = [avatar1, avatar2, avatar3, avatar4, avatar5, avatar6, avatar7, avatar8]
+
 
     const [openUserImgAddModal, onToggleOpenUserImgAddModal] = useToggle(false)
     const { isScreenOpen, onOpenScreen, onCloseScreen, } = useContext(ScreenOpenContext)
     useEffectToggleModal(onOpenScreen, onCloseScreen, [openUserImgAddModal])
     useEffectCloseModal(isScreenOpen, [onToggleOpenUserImgAddModal])
+
+    const [selectedGroup, setSelectedGroup] = useState(null)
+    const [isGroupModalOpen, setIsGroupModalOpen] = useState(false)
 
     const { gameId } = useParams()
     const navigate = useNavigate()
@@ -150,7 +141,7 @@ export function Signup() {
     }
 
     async function onSubmitSignupForm(ev) {
-        ev.preventDefault()
+        if (ev) ev.preventDefault()
         try {
             const user = await signup(credentials)
             const player = await getPlayer(gameId)
@@ -160,7 +151,6 @@ export function Signup() {
         } catch (error) {
             console.error('Error:', error);
         }
-
     }
 
     function resetSignup() {
@@ -173,6 +163,10 @@ export function Signup() {
         setStepIdx(prev => prev + 1)
     }
 
+    function goBack() {
+        setStepIdx(prev => prev - 1)
+    }
+
     async function onSignUpNameEmail() {
         try {
             const { email, name } = credentials
@@ -183,7 +177,7 @@ export function Signup() {
             }
             const res = await isUserExist(miniCredentials)
             if (!res) setStepIdx(prev => prev + 1)
-            else showUserMsg('שם או מייל קיים כבר במערכת')
+            else showUserMsg('מייל קיים כבר במערכת')
 
         } catch (error) {
             console.error('Error:', error);
@@ -196,7 +190,15 @@ export function Signup() {
         <section className="signup">
 
             {stepIdx === 0 &&
-                <LoginSignup credentials={credentials} handleChange={handleChange} onBtnClick={onSignUpNameEmail} text="Sign up" useEffectFunc={getUserFromBack} companyIcon={shallowGame?.icon} />
+                <LoginSignup
+                    credentials={credentials}
+                    handleChange={handleChange}
+                    onBtnClick={onSignUpNameEmail}
+                    text="הרשמה"
+                    useEffectFunc={getUserFromBack}
+                    companyIcon={shallowGame?.icon}
+                    isSignup={true}
+                />
             }
             {/* {stepIdx === 0 && !loggedinPlayer &&
                 <LoginSignup credentials={credentials} handleChange={handleChange} onBtnClick={() => setStepIdx(prev => prev + 1)} btnType="button" text="Sign up" />
@@ -204,62 +206,92 @@ export function Signup() {
 
             {stepIdx === 1 &&
                 <section className="step-1">
-                    <div className="header">
-                        <span className="select">Select your avatar</span>
-                        <img className="plus" onClick={onToggleOpenUserImgAddModal} src={plus} />
-                        {openUserImgAddModal && <UserImgAddModal isLoading={isLoading} media={credentials.media} onChangeFileInput={onChangeFileInput} onCloseModal={onCloseModal} />}
-                    </div>
+                    <FancyTitle title="בחר את האווטאר שלך" />
 
                     <div className="avatar-container">
-                        <div className="carousel-container">
-                            <span> Classic</span>
-                            <Carousel items={avatars1} setCredentials={setCredentials} userImg={credentials.media?.url} />
+                        <div className="add-avatar" onClick={onToggleOpenUserImgAddModal}>
+                            <img src={plus} alt="הוסף אווטאר" />
                         </div>
-                        <div className="carousel-container">
-                            <span>Toon</span>
-                            <Carousel items={avatars2} setCredentials={setCredentials} userImg={credentials.media?.url} />
-                        </div>
-                        <div className="carousel-container">
-                            <span>Animal</span>
-                            <Carousel items={avatars3} setCredentials={setCredentials} userImg={credentials.media?.url} />
-                        </div>
-
-                        <button disabled={!(credentials.media?.url)} onClick={() => setStepIdx(prev => prev + 1)}>Next</button>
+                        {openUserImgAddModal && <UserImgAddModal isLoading={isLoading} media={credentials.media} onChangeFileInput={onChangeFileInput} onCloseModal={onCloseModal} />}
+                        {avatars.map((item, i) => (
+                            <div className="avatar-item" key={i}>
+                                {credentials.media?.url !== item && (
+                                    <img
+                                        onClick={() =>
+                                            setCredentials(prev => ({
+                                                ...prev,
+                                                media: { url: item, type: 'image' }
+                                            }))
+                                        }
+                                        src={item}
+                                        alt={`avatar-${i + 1}`}
+                                    />
+                                )}
+                                {credentials.media?.url === item && (
+                                    <div className="selected-avatar">
+                                        <img src={item} alt={`avatar-${i + 1}`} />
+                                    </div>
+                                    // <SelectedImg imgUrl={item} />
+                                )}
+                            </div>
+                        ))}
                     </div>
+
+                    <button className="big-btn" disabled={!(credentials.media?.url)} onClick={() => setStepIdx(prev => prev + 1)}>קדימה מתחילים!</button>
                 </section>}
 
-            {stepIdx === 2 && shallowGame &&
+            {
+                stepIdx === 2 && shallowGame &&
                 <section className="step-2">
+                    <img className="arrow" src={arrow} alt="חזרה" onClick={goBack} />
                     {shallowGame.groups && <>
-                        <div className="header">
-                            <span>Choose a group</span>
-                        </div>
+                        <FancyTitle title="בחר את הקבוצה שלך" />
                         <ul className="groups-container">
+                            {shallowGame.groups?.map((group, i) =>
+                                <li key={group.id}>
+                                    <span>{group.name}</span>
+                                    <button className="blue-btn"
+                                        onClick={() => {
+                                            setSelectedGroup(group)
+                                            setIsGroupModalOpen(true)
+                                        }}>הצטרף</button>
+                                    {/* <button onClick={() => setCredentials(prev => ({ ...prev, groupId: group.id }))}>הצטרף</button> */}
+                                </li>)}
+                        </ul>
+                        {/* <ul className="groups-container">
                             {shallowGame.groups?.map((group, i) =>
                                 <li key={group.id}
                                     className={credentials.groupId === group.id ? 'selected' : ''}
                                     onClick={() => setCredentials(prev => ({ ...prev, groupId: group.id }))}>
-
                                     {credentials.groupId === group.id && <img className="green-v" src={v} />}
                                     {group.name}
                                 </li>)}
-                        </ul>
+                        </ul> */}
 
-                        <button disabled={!(credentials.groupId)} onClick={onSubmitSignupForm}>Start</button>
+                        {/* <button disabled={!(credentials.groupId)} onClick={onSubmitSignupForm}>התחל</button> */}
 
                     </>}
                     {!shallowGame.groups?.length && <> <p>
                         במשחק זה אין קבוצות
                     </p>
-                        <button onClick={onSubmitSignupForm}>Start</button>
+                        <button onClick={onSubmitSignupForm}>התחל</button>
 
                     </>}
                     {/* onclick=> save the group and start game */}
 
                     {/* {loggedinPlayer.groupId &&
                     <Link to={`/game/${credentials.gameId}`}>כניסה למשחק</Link>} */}
-
-                </section>}
-        </section>
+                    {isGroupModalOpen && (
+                        <GroupJoinModal
+                            group={selectedGroup}
+                            icon={shallowGame?.icon}
+                            onClose={() => setIsGroupModalOpen(false)}
+                            onConfirm={(groupId) => setCredentials(prev => ({ ...prev, groupId }))}
+                            onSubmitSignupForm={onSubmitSignupForm}
+                        />
+                    )}
+                </section>
+            }
+        </section >
     )
 }

@@ -75,6 +75,7 @@ export function Carousel({ items, setCredentials, userImg, Comp1, Comp2, ...rest
                 onTouchStart={dragStart} onTouchMove={dragging}>
                 {items.map((item, i) => <li className="card" key={item._id || i}>
                     {/* {item} */}
+                {console.log('item', item)}
                     {userImg !== item && <img onClick={() => setCredentials(prev => ({ ...prev, media: { url: item, type: 'image' } }))} src={item} />}
                     {userImg === item && <SelectedImg imgUrl={item} />}
 

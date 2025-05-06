@@ -15,6 +15,7 @@ import { User } from './pages/User'
 import { NavLinks } from './cmps/NavLinks'
 import { Statistics } from './pages/Statistics'
 import { Settings } from './pages/Settings'
+import { BackgroundGlow } from './cmps/BackgroundGlow'
 
 import { scrollService } from './services/scroll.service'
 import { ScreenOpenContext } from './contexts/ScreenOpenConext'
@@ -42,6 +43,7 @@ function App() {
       <Router>
         <ScreenOpenContext.Provider value={{ isScreenOpen, onOpenScreen, onCloseScreen }}>
           <section className={'main-layout ' + (isScreenOpen ? 'screen-open' : '')}>
+            <BackgroundGlow />
             <section className="screen" onClick={onCloseScreen}></section>
             {/* <NavLinks /> */}
             <main>
