@@ -3,6 +3,9 @@
     flex-direction: column;
     align-items: center;
     // text-align: center;
+    max-height: 100vh;       
+    overflow-y: auto;         
+    width: 100%;  
 
     form.create-game {
         display: grid;
