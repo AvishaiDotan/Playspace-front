@@ -5,7 +5,6 @@ export function GroupJoinModal({ group, icon, onClose, onConfirm, onSubmitSignup
     if (!group) return
 
     function handleJoinGroup() {
-        console.log('group:', group);
         onConfirm(group.id)
         onSubmitSignupForm()
         onClose()

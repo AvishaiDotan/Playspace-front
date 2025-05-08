@@ -6,7 +6,6 @@ import { authService } from '../services/auth.service'
 import { utilService } from '../services/util.service'
 import { signup, getPlayer, getUser, getPlayerByCookie, isUserExist } from "../store/actions/auth.action"
 import { getShallowGameById } from "../store/actions/game.action"
-import { Carousel } from '../cmps/Carousel'
 import { UserImgAddModal } from "../cmps/UserImgAddModal"
 
 import avatar1 from '../assets/img/avatar_1.png'
@@ -18,8 +17,6 @@ import avatar6 from '../assets/img/avatar_6.png'
 import avatar7 from '../assets/img/avatar_7.png'
 import avatar8 from '../assets/img/avatar_8.png'
 
-import v from '../assets/img/green-v.png'
-import eye from '../assets/img/eye.png'
 import plus from '../assets/img/plus-white.png'
 import arrow from '../assets/img/arrow.png'
 import { LoginSignup } from "../cmps/LoginSignup.jsx"
@@ -30,7 +27,6 @@ import { useToggle } from '../customHooks/useToggle'
 import { useEffectToggleModal } from '../customHooks/useEffectToggleModal'
 import { useEffectCloseModal } from '../customHooks/useEffectCloseModal'
 import { showUserMsg } from "../services/event-bus.service.js"
-import { SelectedImg } from "../cmps/SelectedImg.jsx"
 import { FancyTitle } from "../cmps/FancyTitle.jsx"
 import { GroupJoinModal } from "../cmps/GroupJoinModal.jsx"
 
@@ -231,7 +227,6 @@ export function Signup() {
                                     <div className="selected-avatar">
                                         <img src={item} alt={`avatar-${i + 1}`} />
                                     </div>
-                                    // <SelectedImg imgUrl={item} />
                                 )}
                             </div>
                         ))}
